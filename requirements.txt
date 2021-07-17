@@ -1,0 +1,6 @@
+pytz
+google-cloud-core
+google-cloud-logging
+requests
+boto3
+google-cloud-aiplatform

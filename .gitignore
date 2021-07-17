@@ -1,0 +1,5 @@
+credential.json
+**/__pycache__
+*.pyc
+.idea/**
+env_variables.prod.json
