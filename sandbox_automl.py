@@ -8,12 +8,15 @@ print(stat_prameters)
 
 import prediction
 
-prediction = prediction.predict(
+p = prediction.predict(
     -1.0, 10.1,
     0.44, 1.07, 0.71,
     0.89, 0.83, 0.84,
     0.85
 )
 
-print(prediction)
+print(p)
 
+import record
+
+record.record_prediction('DUMMY', 'stock', 1626458700, 'drop', 'jump', p)

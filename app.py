@@ -10,6 +10,7 @@ logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 app = Flask(__name__)
 
+
 @app.route('/record_prediction', methods=['GET'])
 def handle_record_prediction():
     move_type = request.args.get('move_type')
@@ -24,7 +25,6 @@ def handle_record_prediction():
     windowed_avg = float(request.args.get('windowed_avg'))
 
     daily_stat_parameters = daily_stat.get_stat_prameters(symbol, market, epoch_seconds, windowed_min, windowed_max, windowed_avg)
-    # get_stat_prameters(symbol, market, epoch_seconds, windowed_min, windowed_max, windowed_avg)
     p = prediction.predict(
         min_drop_backward_percent, max_jump_backward_percent,
         daily_stat_parameters.min_sofar_today,
@@ -35,7 +35,7 @@ def handle_record_prediction():
         daily_stat_parameters.prev_daily_avg,
         daily_stat_parameters.prev_day_close
     )
-    
+
     record.record_prediction(symbol, market, epoch_seconds, move_type, 'jump', p)
 
     return p

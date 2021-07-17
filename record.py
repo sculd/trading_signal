@@ -14,22 +14,22 @@ import time_util
 import logging_util
 
 _RESOURCE_DYNAMODB = 'dynamodb'
-_TABLE_NAME = 'market_daily_stat'
+_TABLE_NAME = 'trading_signal'
 
 _dynamodb = boto3.resource(_RESOURCE_DYNAMODB, config=my_config)
 _table = _dynamodb.Table(_TABLE_NAME)
 
-def record_prediction(symbol, market, epoch_seconds, input_move_type, prediction_move_type, prediction):
+def record_prediction(symbol, market, epoch_seconds, observed_move_type, prediction_move_type, prediction):
     item = {
-        'date_et': time_util.epoch_seconds_to_et_str(epoch_seconds)
+        'date_str': time_util.epoch_seconds_to_et_str(epoch_seconds),
         'timestamp': epoch_seconds,
         'datetime_et': time_util.epoch_seconds_to_et_str(epoch_seconds),
         'symbol': symbol,
         'market': market,
-        'move_type': input_move_type,
+        'observed_move_type': observed_move_type,
         'prediction_move_type': prediction_move_type,
-        '0': prediction['0'],
-        '1': prediction['1']
+        '0': str(prediction['0']),
+        '1': str(prediction['1'])
         }
 
     message_str = '[dynamodb.record] {t} {s}'.format(
