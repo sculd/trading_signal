@@ -21,7 +21,7 @@ _table = _dynamodb.Table(_TABLE_NAME)
 
 def record_prediction(symbol, market, epoch_seconds, observed_move_type, prediction_move_type, prediction):
     item = {
-        'date_str': time_util.epoch_seconds_to_et_str(epoch_seconds),
+        'date_str': time_util.epoch_seconds_to_et_date_str(epoch_seconds),
         'timestamp': epoch_seconds,
         'datetime_et': time_util.epoch_seconds_to_et_str(epoch_seconds),
         'symbol': symbol,

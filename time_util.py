@@ -7,7 +7,8 @@ _TIMEZONE_US_EAST = timezone(_TIMEZONE_US_EAST_STR)
 
 def epoch_seconds_to_et_datetime(timestamp_seconds):
     t = datetime.datetime.utcfromtimestamp(timestamp_seconds)
-    t_tz = pytz.utc.localize(t)
+    t_utc = pytz.utc.localize(t)
+    t_tz = t_utc.astimezone(_TIMEZONE_US_EAST)
     return t_tz
 
 def truncate_utc_timestamp_to_minute(timestamp_seconds):
@@ -20,7 +21,9 @@ def epoch_seconds_to_str(timestamp_seconds):
     return str(t_tz)
 
 def epoch_seconds_to_et_str(timestamp_seconds):
-    t = datetime.datetime.utcfromtimestamp(timestamp_seconds)
-    t_utc = pytz.utc.localize(t)
-    t_tz = t_utc.astimezone(_TIMEZONE_US_EAST)
+    t_tz = epoch_seconds_to_et_datetime(timestamp_seconds)
     return t_tz.strftime('%Y-%m-%dT%H:%M:%S%Z')
+
+def epoch_seconds_to_et_date_str(timestamp_seconds):
+    t_tz = epoch_seconds_to_et_datetime(timestamp_seconds)
+    return t_tz.strftime('%Y-%m-%d')
