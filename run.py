@@ -15,7 +15,7 @@ def run_build(project_id):
         'builds',
         'submit',
         '--tag',
-        'gcr.io/{project_id}/us_finance_daily_miner'.format(project_id=project_id),
+        'gcr.io/{project_id}/trading_signal'.format(project_id=project_id),
         '--project={project_id}'.format(project_id=project_id)])
 
 def run_deploy(project_id, env_vars_dict):
@@ -25,9 +25,9 @@ def run_deploy(project_id, env_vars_dict):
         'beta',
         'run',
         'deploy',
-        'us-finance-daily-miner',
+        'trading-signal',
         '--image',
-        'gcr.io/{project_id}/us_finance_daily_miner'.format(project_id=project_id),
+        'gcr.io/{project_id}/trading_signal'.format(project_id=project_id),
         '--project={project_id}'.format(project_id=project_id),
         '--update-env-vars', env_vars_list
     ])
