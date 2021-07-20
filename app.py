@@ -16,7 +16,7 @@ def handle_record_prediction():
     move_type = request.args.get('move_type')
     symbol = request.args.get('symbol')
     market = request.args.get('market')
-    price = request.args.get('price')
+    price = float(request.args.get('price'))
     epoch_seconds = int(request.args.get('epoch_seconds'))
     max_jump_backward_percent = float(request.args.get('max_jump_backward_percent'))
     min_drop_backward_percent = float(request.args.get('min_drop_backward_percent'))
