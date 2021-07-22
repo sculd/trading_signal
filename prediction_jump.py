@@ -6,7 +6,7 @@ from google.protobuf import json_format
 from google.protobuf.struct_pb2 import Value
 
 _PROJECT_ID = os.getenv('GOOGLE_CLOUD_PROJECT')
-_ENDPOINT_ID = os.getenv('MODEL_ENDPOINT_ID')
+_ENDPOINT_ID = '8049814898017828864'
 _LOCATION = 'us-central1'
 _API_ENDPOINT = "us-central1-aiplatform.googleapis.com"
 _CLIENT_OPTIONS = {"api_endpoint": _API_ENDPOINT}

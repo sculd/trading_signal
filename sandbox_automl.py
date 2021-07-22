@@ -6,9 +6,9 @@ stat_prameters = daily_stat.get_stat_prameters(
 
 print(stat_prameters)
 
-import prediction
+import prediction_jump
 
-p = prediction.predict(
+p = prediction_jump.predict(
     -1.0, 10.1,
     0.44, 1.07, 0.71,
     0.89, 0.83, 0.84,
